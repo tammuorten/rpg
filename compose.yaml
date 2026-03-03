@@ -1,0 +1,16 @@
+
+services:
+  postgres:
+    image: postgres:16-alpine
+    container_name: postgresDB_RPG
+    environment:
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_USER=rpg_admin
+      - POSTGRES_DB=rpg_db
+    ports:
+      - "5431:5432"
+    volumes:
+      - postgres-rpg-data:/var/lib/postgresql/data
+
+volumes:
+  postgres-rpg-data:
