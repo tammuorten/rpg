@@ -23,8 +23,7 @@ public class CombatController {
     public ResponseEntity<CombatResult> turn(@Valid @RequestBody CombatRequest request) {
         CombatResult result = combatService.executeTurn(request);
         return ResponseEntity.ok(result);
-    }
-
-    ;
+    };
+//    todo aggiungere un controller per dare le info del personaggio (ragionamento inverso dell'imput del combattimento) sfruttare polimorfismo
 
 }

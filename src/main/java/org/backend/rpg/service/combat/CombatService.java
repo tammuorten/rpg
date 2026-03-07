@@ -32,6 +32,8 @@ private CharacterRepository characterRepository;
      *  3. Il mostro contrattacca con il suo calculateDamage()
      *  4. Restituisce CombatResult con stato aggiornato e log testuale
      */
+//    todo aggiungere una scelta di combattimento randomica per i mostri
+
     public CombatResult executeTurn(CombatRequest request) {
         GameCharacter character = characterRepository.findById(request.getCharacterId())
                 .orElseThrow(() -> new IllegalArgumentException(

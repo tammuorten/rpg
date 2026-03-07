@@ -39,6 +39,7 @@ public abstract class GameCharacter {
     public Set<CharacterAbilities> abilities;
     @ManyToOne
     private User owner;                      // il personaggio appartiene a un utente
+//    todo aggiungere le abilità per ogni sottoclasse
 
     // metodi polimorfici — ogni sottoclasse li implementa
     public abstract int calculateDamage();

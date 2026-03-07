@@ -54,6 +54,8 @@ public class SecurityConfig {
 //                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
 //                        .requestMatchers("/api/orders/**", "/api/orders").hasRole("USER")
                         .anyRequest().authenticated()
+//                        todo aggiungere le nuove rotte una volta finito con i nuovi controller
+
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .authenticationProvider(authenticationProvider())
