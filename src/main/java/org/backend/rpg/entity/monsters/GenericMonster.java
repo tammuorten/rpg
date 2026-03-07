@@ -28,7 +28,7 @@ public abstract class GenericMonster {
     private float defense;
     private float baseDamage;
 
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "jt_mon_abilities", // Nome della tabella di giunzione nel DB
             joinColumns = @JoinColumn(name = "monster_id"),

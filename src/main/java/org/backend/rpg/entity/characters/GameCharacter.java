@@ -28,7 +28,7 @@ public abstract class GameCharacter {
     private int intelligence;
     private int wisdom;
     private int charisma;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "jt_char_abilities",
             joinColumns = @JoinColumn(name = "character_id"),

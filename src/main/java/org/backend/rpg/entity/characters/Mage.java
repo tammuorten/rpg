@@ -14,7 +14,7 @@ public class Mage extends GameCharacter {
 
     private int mana;
     private int maxMana;
-    @ManyToMany(fetch = FetchType.LAZY)
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(name = "jt_mage_spells",
             joinColumns = @JoinColumn(name = "character_id"),
             inverseJoinColumns = @JoinColumn(name = "spell_id"))
