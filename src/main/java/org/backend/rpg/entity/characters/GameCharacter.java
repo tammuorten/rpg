@@ -5,6 +5,7 @@ import lombok.Getter;
 import org.backend.rpg.entity.User;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "character")
@@ -19,16 +20,28 @@ public abstract class GameCharacter {
     private String name;
     private String description;
     private int level;
-    private int currentHp;
-    private int maxHp;
-    private int baseAttack;
-    private int baseDefense;
+    private float currentHp;
+    private float maxHp;
+    private int strength;
+    private int dexterity;
+    private int constitution;
+    private int intelligence;
+    private int wisdom;
+    private int charisma;
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "jt_char_abilities",
+            joinColumns = @JoinColumn(name = "character_id"),
+            inverseJoinColumns = @JoinColumn(name = "ability_id")
 
+
+    )
+    public Set<CharacterAbilities> abilities;
     @ManyToOne
     private User owner;                      // il personaggio appartiene a un utente
 
     // metodi polimorfici — ogni sottoclasse li implementa
     public abstract int calculateDamage();
-    public abstract String getCharacterType();
-    public abstract List<String> getSpecialAbilities();
+
+    public abstract Set<CharacterAbilities> getSpecialAbilities();
 }

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import lombok.Getter;
 
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "mages")
@@ -13,23 +14,22 @@ public class Mage extends GameCharacter {
 
     private int mana;
     private int maxMana;
-    private int spellPower;
-    private String schoolOfMagic;   // FIRE, ICE, ARCANE
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(name = "jt_mage_spells",
+            joinColumns = @JoinColumn(name = "character_id"),
+            inverseJoinColumns = @JoinColumn(name = "spell_id"))
+
+
+    private Set<Spells> spells;   // FIRE, ICE, ARCANE
 
     @Override
     public int calculateDamage() {
-        return getBaseAttack() + (spellPower * 3);
+        return getStrength() + (getIntelligence() * 3);
     }
 
-    @Override
-    public String getCharacterType() { return "MAGE"; }
 
     @Override
-    public List<String> getSpecialAbilities() {
-        return switch (schoolOfMagic) {
-            case "FIRE"   -> List.of("Fireball", "Inferno", "Phoenix Strike");
-            case "ICE"    -> List.of("Frost Nova", "Blizzard", "Ice Lance");
-            default       -> List.of("Arcane Blast", "Mana Surge");
-        };
+    public Set<CharacterAbilities> getSpecialAbilities() {
+        return getAbilities();
     }
 }

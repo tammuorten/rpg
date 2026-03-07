@@ -13,10 +13,4 @@ import java.util.Optional;
 public interface CharacterRepository extends JpaRepository<GameCharacter, Long> {
     List<GameCharacter> findByOwnerId(Long userId);
 
-    // Personaggio per nome e owner (per evitare duplicati)
-    Optional<GameCharacter> findByNameAndOwnerId(String name, Long userId);
-
-    // Usato per la schermata "seleziona personaggio"
-    @Query("SELECT c FROM GameCharacter c WHERE c.owner.id = :userId ORDER BY c.level DESC")
-    List<GameCharacter> findAllByOwnerOrderedByLevel(@Param("userId") Long userId);
 }

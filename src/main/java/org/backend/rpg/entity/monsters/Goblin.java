@@ -1,4 +1,4 @@
-package org.backend.rpg.entity.characters;
+package org.backend.rpg.entity.monsters;
 
 import jakarta.persistence.DiscriminatorValue;
 import jakarta.persistence.Entity;
@@ -6,17 +6,15 @@ import jakarta.persistence.Table;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.List;
 import java.util.Set;
 
 @Entity
-@Table(name = "rogues")
-@DiscriminatorValue("ROGUE")
+@Table(name = "goblins")
+@DiscriminatorValue("GOBLIN")
 @Getter
-public class Rogue extends GameCharacter {
+@Setter
+public class Goblin extends GenericMonster {
 
-    private int flourishPoints;
-    private boolean isDualWielding;
 
     @Override
     public int calculateDamage() {
@@ -24,8 +22,7 @@ public class Rogue extends GameCharacter {
     }
 
     @Override
-    public Set<CharacterAbilities> getSpecialAbilities() {
+    public Set<MonsterAbilities> getSpecialAbilities() {
         return getAbilities();
     }
-
 }

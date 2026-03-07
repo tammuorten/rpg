@@ -11,11 +11,4 @@ import java.util.List;
 @Repository
 public interface MageRepository extends CrudRepository<Mage, Long> {
     List<Mage> findByOwnerId(Long userId);
-
-    // Tutti i maghi del fuoco
-    List<Mage> findBySchoolOfMagic(String school);
-
-    // Maghi con mana pieno (utili per selezione)
-    @Query("SELECT m FROM Mage m WHERE m.mana = m.maxMana AND m.owner.id = :userId")
-    List<Mage> findFullManaByOwner(@Param("userId") Long userId);
 }
