@@ -53,7 +53,8 @@ public class SecurityConfig {
                         .requestMatchers("/auth/register", "/auth/login", "/api/public").permitAll()
 //                        .requestMatchers("/api/admin/**").hasRole("ADMIN")
 //                        .requestMatchers("/api/orders/**", "/api/orders").hasRole("USER")
-                        .anyRequest().authenticated()
+//                        .anyRequest().authenticated()
+                                .anyRequest().permitAll()
 //                        todo aggiungere le nuove rotte una volta finito con i nuovi controller
 
                 )

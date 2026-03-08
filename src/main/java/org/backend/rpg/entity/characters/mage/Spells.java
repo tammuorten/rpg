@@ -1,4 +1,4 @@
-package org.backend.rpg.entity.characters;
+package org.backend.rpg.entity.characters.mage;
 
 import jakarta.persistence.*;
 import lombok.Getter;
@@ -6,7 +6,7 @@ import lombok.Getter;
 @Entity
 @Getter
 @Table(name = "spells")
-
+@SuppressWarnings("FieldMayBeFinal")
 public class Spells {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

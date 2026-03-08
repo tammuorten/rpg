@@ -1,11 +1,7 @@
 package org.backend.rpg.entity.monsters;
 
 import jakarta.persistence.*;
-import lombok.Data;
 import lombok.Getter;
-
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -13,6 +9,7 @@ import java.util.Set;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "type")
 @Getter
+@SuppressWarnings("FieldMayBeFinal")
 public abstract class GenericMonster {
     @Id
     private Long Id;
@@ -20,7 +17,6 @@ public abstract class GenericMonster {
     private String name;
     @Column(name = "description")
     private String description;
-    private String type;
     @Column(name = "level")
     private Integer level;
     private float health;
@@ -35,9 +31,6 @@ public abstract class GenericMonster {
             inverseJoinColumns = @JoinColumn(name = "ability_id")
     )
     private Set<MonsterAbilities> abilities;
-
-
     public abstract int calculateDamage();
-
     public abstract Set<MonsterAbilities> getSpecialAbilities();
 }

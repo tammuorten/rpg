@@ -1,15 +1,13 @@
 package org.backend.rpg.dto.characterInfo;
 
-import jakarta.persistence.*;
 import lombok.Data;
-import org.backend.rpg.entity.characters.CharacterAbilities;
 import org.backend.rpg.entity.characters.GameCharacter;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Data
-public abstract class CharacterInfoResponse {
+public abstract class CharacterInfoResponseDto {
 
 
     private Long id;
@@ -26,7 +24,7 @@ public abstract class CharacterInfoResponse {
     private int charisma;
     public Set<AbilityDto> abilities;
 
-    protected static void mapCommonFields(CharacterInfoResponse dto, GameCharacter character) {
+    protected static void mapCommonFields(CharacterInfoResponseDto dto, GameCharacter character) {
         dto.setId(character.getId());
         dto.setName(character.getName());
         dto.setDescription(character.getDescription());

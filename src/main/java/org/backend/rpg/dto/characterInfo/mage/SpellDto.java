@@ -1,8 +1,8 @@
-package org.backend.rpg.dto.characterInfo;
+package org.backend.rpg.dto.characterInfo.mage;
 
 import lombok.Builder;
 import lombok.Data;
-import org.backend.rpg.entity.characters.Spells;
+import org.backend.rpg.entity.characters.mage.Spells;
 
 @Data
 @Builder

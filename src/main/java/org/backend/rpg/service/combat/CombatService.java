@@ -4,12 +4,10 @@ import lombok.RequiredArgsConstructor;
 import org.backend.rpg.dto.CombatRequest;
 import org.backend.rpg.dto.CombatResult;
 import org.backend.rpg.dto.combatActions.*;
-import org.backend.rpg.entity.characters.CharacterAbilities;
 import org.backend.rpg.entity.characters.GameCharacter;
-import org.backend.rpg.entity.characters.Mage;
-import org.backend.rpg.entity.characters.Spells;
+import org.backend.rpg.entity.characters.mage.Mage;
+import org.backend.rpg.entity.characters.mage.Spells;
 import org.backend.rpg.entity.monsters.GenericMonster;
-import org.backend.rpg.repository.UserRepository;
 import org.backend.rpg.repository.characters.CharacterRepository;
 import org.backend.rpg.repository.monsters.MonsterRepository;
 import org.springframework.stereotype.Service;
@@ -20,12 +18,11 @@ import java.util.List;
 @RequiredArgsConstructor
 @Service
 public class CombatService {
-private MonsterRepository monsterRepository;
-private CharacterRepository characterRepository;
+private final MonsterRepository monsterRepository;
+private final CharacterRepository characterRepository;
 
     /**
      * Esegue un singolo turno di combattimento.
-     *
      * Flusso:
      *  1. Carica personaggio e mostro dal DB
      *  2. Risolve l'azione del personaggio (instanceof pattern matching - Java 16+)
@@ -44,7 +41,7 @@ private CharacterRepository characterRepository;
                         "Mostro non trovato: " + request.getMonsterId()));
 
         List<String> log = new ArrayList<>();
-        int damageDealt = 0;
+        float damageDealt = 0;
         String actionDescription;
         boolean defending = false;
 
@@ -52,7 +49,7 @@ private CharacterRepository characterRepository;
         CombatAction action = request.getAction();
 
         if (action instanceof BasicAttackAction) {
-            damageDealt = character.calculateDamage();
+            damageDealt = character.basicAttack();
             actionDescription = "Attacco base";
             log.add(character.getName() + " attacca per " + damageDealt + " danni!");
 

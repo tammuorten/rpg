@@ -1,21 +1,23 @@
-package org.backend.rpg.dto.characterInfo;
+package org.backend.rpg.dto.characterInfo.mage;
 
 import lombok.Data;
-import org.backend.rpg.entity.characters.Mage;
-import org.backend.rpg.entity.characters.Spells;
+import lombok.EqualsAndHashCode;
+import org.backend.rpg.dto.characterInfo.CharacterInfoResponseDto;
+import org.backend.rpg.entity.characters.mage.Mage;
 
 import java.util.Set;
 import java.util.stream.Collectors;
 
 @Data
-public class MageInfoDTO extends CharacterInfoResponse {
+@EqualsAndHashCode(callSuper = true)
+public class MageInfoDto extends CharacterInfoResponseDto {
     private int mana;
     private int maxMana;
     private Set<SpellDto> spells;
 
 // ca chiamare con MageInfo mageInfo = newMageInfo.from(mage);
-public static MageInfoDTO from(Mage mage) {
-    MageInfoDTO dto = new MageInfoDTO();
+public static MageInfoDto from(Mage mage) {
+    MageInfoDto dto = new MageInfoDto();
     mapCommonFields(dto, mage);        // campi comuni dal padre — una riga
     dto.setMana(mage.getMana());
     dto.setMaxMana(mage.getMaxMana());

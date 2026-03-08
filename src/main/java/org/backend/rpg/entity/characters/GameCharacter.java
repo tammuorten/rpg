@@ -4,7 +4,6 @@ import jakarta.persistence.*;
 import lombok.Getter;
 import org.backend.rpg.entity.User;
 
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -33,16 +32,12 @@ public abstract class GameCharacter {
             name = "jt_char_abilities",
             joinColumns = @JoinColumn(name = "character_id"),
             inverseJoinColumns = @JoinColumn(name = "ability_id")
-
-
     )
     public Set<CharacterAbilities> abilities;
     @ManyToOne
     private User owner;                      // il personaggio appartiene a un utente
-//    todo aggiungere le abilità per ogni sottoclasse
+
 
     // metodi polimorfici — ogni sottoclasse li implementa
-    public abstract int calculateDamage();
-
-    public abstract Set<CharacterAbilities> getSpecialAbilities();
+    public abstract float basicAttack();
 }

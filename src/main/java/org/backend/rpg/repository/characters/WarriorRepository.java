@@ -1,6 +1,6 @@
 package org.backend.rpg.repository.characters;
 
-import org.backend.rpg.entity.characters.Warrior;
+import org.backend.rpg.entity.characters.warrior.Warrior;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

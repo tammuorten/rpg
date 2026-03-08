@@ -14,11 +14,11 @@ import java.util.List;
 public class CombatResult {
     // --- Azione del personaggio ---
     private String actionPerformed;       // es. "BASIC_ATTACK", "CAST_SPELL: Fireball"
-    private int damageDealt;              // danno inflitto al mostro
+    private float damageDealt;              // danno inflitto al mostro
 
     // --- Contrattacco del mostro ---
     private String monsterAction;         // descrizione dell'azione del mostro
-    private int monsterDamageDealt;       // danno inflitto al personaggio
+    private float monsterDamageDealt;       // danno inflitto al personaggio
 
     // --- Stato post-turno ---
     private float characterHpAfter;
