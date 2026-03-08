@@ -19,5 +19,5 @@ public class CharacterAbilities {
     private float baseDamage;
 
     @ManyToMany(mappedBy = "abilities")
-    private Set<GenericMonster> characters = new HashSet<>();
+    private Set<GameCharacter> characters = new HashSet<>();
 }
