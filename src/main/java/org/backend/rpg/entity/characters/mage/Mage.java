@@ -1,7 +1,7 @@
 package org.backend.rpg.entity.characters.mage;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.*;
 import org.backend.rpg.entity.characters.GameCharacter;
 
 import java.util.Set;
@@ -10,6 +10,10 @@ import java.util.Set;
 @Table(name = "mages")
 @DiscriminatorValue("MAGE")
 @Getter
+@Setter
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
 @SuppressWarnings("FieldMayBeFinal")
 public class Mage extends GameCharacter {
 
@@ -26,6 +30,12 @@ public class Mage extends GameCharacter {
         return getStrength() + (getIntelligence() * 3);
     }
 
+    @Override
+    public void setInitialHP() {
+        float baseHP = (float) (20 + (1.5*getLevel()*getConstitution()));
+        this.setMaxHp(baseHP);
+        this.setCurrentHp(baseHP);
+    }
 
 
 }

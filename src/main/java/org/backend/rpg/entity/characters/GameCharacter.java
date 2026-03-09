@@ -1,7 +1,7 @@
 package org.backend.rpg.entity.characters;
 
 import jakarta.persistence.*;
-import lombok.Getter;
+import lombok.*;
 import org.backend.rpg.entity.User;
 
 import java.util.Set;
@@ -11,6 +11,8 @@ import java.util.Set;
 @Inheritance(strategy = InheritanceType.JOINED)
 @DiscriminatorColumn(name = "type")
 @Getter
+@Setter
+
 public abstract class GameCharacter {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -40,4 +42,5 @@ public abstract class GameCharacter {
 
     // metodi polimorfici — ogni sottoclasse li implementa
     public abstract float basicAttack();
+    public abstract void setInitialHP();
 }
