@@ -1,5 +1,6 @@
 package org.backend.rpg.controller;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.backend.rpg.dto.characterCreation.CharacterCreationRequestDto;
 import org.backend.rpg.dto.characterInfo.CharacterInfoResponseDto;
@@ -26,7 +27,7 @@ public class CharacterController {
 
     @PostMapping("/create")
     public ResponseEntity<Void> createCharacter(
-            @RequestBody CharacterCreationRequestDto request,
+            @Valid @RequestBody CharacterCreationRequestDto request,
             @AuthenticationPrincipal User user  // ← Spring lo inietta automaticamente
     ) {
         characterCreationService.createCharacter(request, user);
