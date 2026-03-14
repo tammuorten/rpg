@@ -1,0 +1,10 @@
+spring:
+
+  datasource:
+    url: jdbc:postgresql://localhost:5431/rpg_db
+    username: rpg_admin
+    password: password
+
+jwt:
+  secret:
+    key: "mySecretKeyForJWTTokenGenerationAndValidationPurposesOnlyDoNotUseInProduction1234567890"

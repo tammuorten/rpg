@@ -1,10 +1,12 @@
 spring:
   application:
     name: rpg
+  profiles:
+    active: local
   datasource:
-    url: jdbc:postgresql://localhost:5431/rpg_db
-    username: rpg_admin
-    password: password
+    url: ###########
+    username: ###########
+    password: ###########
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
