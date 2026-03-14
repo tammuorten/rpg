@@ -26,6 +26,6 @@ spring:
 
 jwt:
   secret:
-    key: "mySecretKeyForJWTTokenGenerationAndValidationPurposesOnlyDoNotUseInProduction1234567890"
+    key: ######
   expiration:
     ms: 3600000
